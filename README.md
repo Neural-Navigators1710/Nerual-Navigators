@@ -26,45 +26,47 @@ An intelligent, self-driving robot designed for the **WRO Future Engineers 2025*
 - `main/main_obstacle.py` – Start **Obstacle Challenge** mode
 - `main/main_auto.py` – (Optional) Unified logic: switches modes automatically
 
-File Structures:
+## 📁 Project Structure
 
-wro-future-2025/
+```
+Neural-Navigators/
 │
-├── README.md                # Project overview (this file)
-├── LICENSE                  # Open source license
-├── requirements.txt         # Python dependencies
+├── LICENSE                   # Open-source license (MIT recommended)
+├── README.md                 # Project overview, setup, architecture, and credits
+├── requirements.txt          # Python dependencies for OpenCV and hardware
 │
-├── main/                    # Entry points for both challenges
-│   ├── main_open.py
-│   ├── main_obstacle.py
-│   └── main_auto.py
+├── main/                     # Entry points to run different robot modes
+│   ├── main_open.py          # Open Challenge logic (lane following, lap counting)
+│   ├── main_obstacle.py      # Obstacle Challenge logic (object detection + path switching)
+│   └── main_auto.py          # Unified mode: auto-switches between open and obstacle
 │
-├── vision/                  # OpenCV modules
-│   ├── lane_detection.py
-│   └── obstacle_detection.py
+├── vision/                   # Computer vision logic (OpenCV)
+│   ├── lane_detection.py     # Detects lanes, center alignment, curves
+│   └── obstacle_detection.py # Color filtering, shape recognition for obstacle detection
 │
-├── logic/                   # Robot's decision-making brain
-│   ├── lap_counter.py
-│   └── stop_handler.py
+├── logic/                    # Core logic and state management
+│   ├── lap_counter.py        # Tracks laps completed
+│   └── stop_handler.py       # Logic to stop robot in original start section
 │
-├── hardware/                # Gyro, buttons, LEDs
-│   ├── bma250_gyro.py
-│   ├── button.py
-│   └── led_ready.py
+├── hardware/                 # Interfaces for sensors and actuators
+│   ├── bma250_gyro.py        # Reads rotation data from BMA250 gyro for lap/orientation
+│   ├── button.py             # Detects push button press to start the robot
+│   └── led_ready.py          # Controls LED indicator for system readiness
 │
-├── esp/                     # ESP code for motors and sensors
-│   ├── main.ino
-│   └── color_sensor.ino
+├── esp/                      # Microcontroller (ESP) code in Arduino/C++
+│   ├── main.ino              # Controls motors and servo based on commands
+│   └── color_sensor.ino      # Reads data from color sensor (e.g., for obstacle shape)
 │
-├── test/                    # Test and calibration scripts
-│   └── test_lane_detect.py
+├── test/                     # Calibration and debugging scripts
+│   └── test_lane_detect.py   # Standalone script to test lane detection separately
 │
-├── assets/                  # Robot pics, screenshots, demo GIFs
-│   ├── robot.jpg
-│   └── field_demo.gif
+├── assets/                   # Visuals for documentation/demo
+│   ├── robot.jpg             # Picture of your robot
+│   └── field_demo.gif        # GIF or video showing the robot in action
 │
-└── docs/                    # (Optional) diagrams, flowcharts, rule summaries
-    └── system_flow.png
+└── docs/                     # Optional diagrams, notes, or rule highlights
+    └── system_flow.png       # System block diagram or flowchart of logic
+```
 
 ## 🔧 Setup Instructions
 
