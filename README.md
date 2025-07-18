@@ -26,10 +26,7 @@ An intelligent, self-driving robot designed for the **WRO Future Engineers 2025*
 - `main/main_obstacle.py` – Start **Obstacle Challenge** mode
 - `main/main_auto.py` – (Optional) Unified logic: switches modes automatically
 
-**Run a mode like this:**
-
-```bash
-python3 main/main_open.py
+File Structures:
 
 wro-future-2025/
 │
