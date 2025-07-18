@@ -19,40 +19,34 @@ An intelligent, self-driving robot designed for the **WRO Future Engineers 2025*
 ---
 
 ## 📁 Project Structure
-wro-future-2025/
-│
-├── main.py                  # Main script to run the robot
-├── requirements.txt         # Python dependencies
-├── README.md                # This file
-│
-├── vision/                  # OpenCV modules
-│   ├── lane_detection.py
-│   └── obstacle_detection.py
-│
-├── logic/                   # Robot’s decision-making brain
-│   ├── lap_counter.py
-│   └── stop_handler.py
-│
-├── hardware/                # Gyro, buttons, LEDs
-│   ├── bma250_gyro.py
-│   ├── button.py
-│   └── led_ready.py
-│
-├── esp/                     # ESP code for motors + sensors
-│   ├── main.ino
-│   └── color_sensor.ino
-│
-├── test/                    # Test and calibration scripts
-│   └── test_lane_detect.py
-│
-├── assets/                  # Robot pics, screenshots, demo GIFs
-│   ├── robot.jpg
-│   └── field_demo.gif
-│
-└── docs/                    # (Optional) diagrams, flowcharts, rule summaries
-└── system_flow.png
+## 📁 Project Structure
 
----
+- `main.py` – Main script to run the robot
+- `requirements.txt` – Python dependencies
+- `README.md` – This file
+
+**Folders:**
+
+- `vision/` – OpenCV modules
+  - `lane_detection.py`
+  - `obstacle_detection.py`
+- `logic/` – Robot's decision-making brain
+  - `lap_counter.py`
+  - `stop_handler.py`
+- `hardware/` – Gyro, buttons, LEDs
+  - `bma250_gyro.py`
+  - `button.py`
+  - `led_ready.py`
+- `esp/` – ESP code for motors and sensors
+  - `main.ino`
+  - `color_sensor.ino`
+- `test/` – Test and calibration scripts
+  - `test_lane_detect.py`
+- `assets/` – Robot pics, screenshots, demo GIFs
+  - `robot.jpg`
+  - `field_demo.gif`
+- `docs/` – (Optional) Diagrams, flowcharts, rule summaries
+  - `system_flow.png`
 
 ## 🔧 Setup Instructions
 
