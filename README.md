@@ -18,39 +18,61 @@ An intelligent, self-driving robot designed for the **WRO Future Engineers 2025*
 
 ---
 
-## 📁 Project Structure
-## 📁 Project Structure
+## 🚦 Challenge Entry Points
 
-- `main.py` – Main script to run the robot
-- `requirements.txt` – Python dependencies
-- `README.md` – This file
+> Each challenge mode has a separate `main.py` script.
 
-**Folders:**
+- `main/main_open.py` – Start **Open Challenge** mode
+- `main/main_obstacle.py` – Start **Obstacle Challenge** mode
+- `main/main_auto.py` – (Optional) Unified logic: switches modes automatically
 
-- `vision/` – OpenCV modules
-  - `lane_detection.py`
-  - `obstacle_detection.py`
-- `logic/` – Robot's decision-making brain
-  - `lap_counter.py`
-  - `stop_handler.py`
-- `hardware/` – Gyro, buttons, LEDs
-  - `bma250_gyro.py`
-  - `button.py`
-  - `led_ready.py`
-- `esp/` – ESP code for motors and sensors
-  - `main.ino`
-  - `color_sensor.ino`
-- `test/` – Test and calibration scripts
-  - `test_lane_detect.py`
-- `assets/` – Robot pics, screenshots, demo GIFs
-  - `robot.jpg`
-  - `field_demo.gif`
-- `docs/` – (Optional) Diagrams, flowcharts, rule summaries
-  - `system_flow.png`
+**Run a mode like this:**
+
+```bash
+python3 main/main_open.py
+
+wro-future-2025/
+│
+├── README.md                # Project overview (this file)
+├── LICENSE                  # Open source license
+├── requirements.txt         # Python dependencies
+│
+├── main/                    # Entry points for both challenges
+│   ├── main_open.py
+│   ├── main_obstacle.py
+│   └── main_auto.py
+│
+├── vision/                  # OpenCV modules
+│   ├── lane_detection.py
+│   └── obstacle_detection.py
+│
+├── logic/                   # Robot's decision-making brain
+│   ├── lap_counter.py
+│   └── stop_handler.py
+│
+├── hardware/                # Gyro, buttons, LEDs
+│   ├── bma250_gyro.py
+│   ├── button.py
+│   └── led_ready.py
+│
+├── esp/                     # ESP code for motors and sensors
+│   ├── main.ino
+│   └── color_sensor.ino
+│
+├── test/                    # Test and calibration scripts
+│   └── test_lane_detect.py
+│
+├── assets/                  # Robot pics, screenshots, demo GIFs
+│   ├── robot.jpg
+│   └── field_demo.gif
+│
+└── docs/                    # (Optional) diagrams, flowcharts, rule summaries
+    └── system_flow.png
 
 ## 🔧 Setup Instructions
 
 1. **Install dependencies** (on Raspberry Pi):
+
     ```bash
     pip install -r requirements.txt
     ```
@@ -60,59 +82,40 @@ An intelligent, self-driving robot designed for the **WRO Future Engineers 2025*
    - Connect ESP to motor, servo, and color sensor
    - Optional: use I2C or UART between Pi ↔ ESP
 
-3. **Start the robot:**
+3. **Start the robot**
+
     ```bash
-    python3 main.py
+    python3 main/main_open.py
     ```
 
 4. **Press the push button** when the LED turns green to begin.
 
----
+🔁 Mode Switching
 
-## 🔁 Mode Switching
+Your robot can run both challenges from the same repo.
 
-The robot has two files for two challenges: 
-- **Open Challenge Mode**: lane following + lap tracking
-- **Obstacle Challenge Mode**: activates object detection, path diversion
-
-Use internal logic (lap counter or button press) to toggle mode at runtime.
-
----
+	•	Open Challenge Mode: lane detection + lap tracking
+	•	Obstacle Challenge Mode: object detection + path change
+Modes are separated to keep things modular and readable.
 
 ## 🧠 Architecture
 
-| Component     | Role                        |
-|---------------|-----------------------------|
-| Raspberry Pi  | Brain (vision + control)    |
-| PiCam         | Eyes (OpenCV processing)    |
-| ESP (external) | Muscles (motor/sensor control) |
-| Gyro (BMA250) | Orientation + lap detection |
-| LEDs + Button | Status & control interface  |
+| Component      | Role                          |
+|----------------|-------------------------------|
+| Raspberry Pi   | Brain (vision + control)      |
+| PiCam          | Eyes (OpenCV processing)      |
+| ESP (external) | Muscles (motor/sensor control)|
+| Gyro (BMA250)  | Orientation + lap detection   |
+| LEDs + Button  | Status & control interface    |
 
----
+👨‍💻 Contributors
 
-## 📸 Demo Media
+Built by [ Nitish Krishna, Ritvik Raghav / Neural Navigators]
+For WRO Future Engineers 2025
 
-> Add your own robot demo files inside `/assets` and embed like this:
+📜 License
 
-![Robot Demo](assets/field_demo.gif)
+This project is open-source under the MIT License.
 
----
 
-## ✨ Status
 
-🧪 **In Progress** — currently testing lane stability, corner handling, and obstacle avoidance logic.
-
----
-
-## 👨‍💻 Contributors
-
-Built by [Your Name / Team Name]  
-Mentored by [Your mentor or coach]  
-For **WRO Future Engineers 2025**
-
----
-
-## 📜 License
-
-This project is open-source under the [MIT License](LICENSE).
