@@ -29,10 +29,6 @@ Kick off the development of the self-driving robot for WRO Future Engineers 2025
 
 ---
 
-## 📷 Media
-![Repo Screenshot](../assets/repo_preview.jpg)
-
----
 
 ## 💡 Learnings
 - Engineering documentation is as important as the robot itself in WRO
