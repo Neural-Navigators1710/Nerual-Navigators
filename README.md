@@ -14,7 +14,7 @@ An intelligent, self-driving robot designed for the **WRO Future Engineers 2025*
 - 🚦 Push-button start and ready LED indication
 - 🛑 Accurate stop in original section after 3 laps
 - 🔁 Seamless mode switching (Open ↔ Obstacle Challenge)
-- 🔌 Modular ESP-based control for motors and sensors
+- 🔌 Modular nano-based control for motors and sensors
 
 ---
 
@@ -53,7 +53,7 @@ Neural-Navigators/
 │   ├── button.py             # Detects push button press to start the robot
 │   └── led_ready.py          # Controls LED indicator for system readiness
 │
-├── esp/                      # Microcontroller (ESP) code in Arduino/C++
+├── nano/                      # Microcontroller (nano) code in Arduino/C++
 │   ├── main.ino              # Controls motors and servo based on commands
 │   └── color_sensor.ino      # Reads data from color sensor (e.g., for obstacle shape)
 │
@@ -78,8 +78,8 @@ Neural-Navigators/
 
 2. **Connect hardware**
    - Attach PiCam, push button, and LED
-   - Connect ESP to motor, servo, and color sensor
-   - Optional: use I2C or UART between Pi ↔ ESP
+   - Connect nano to motor, servo, and color sensor
+   - Optional: use I2C or UART between Pi ↔ nano
 
 3. **Start the robot**
 
@@ -103,7 +103,7 @@ Modes are separated to keep things modular and readable.
 |----------------|-------------------------------|
 | Raspberry Pi   | Brain (vision + control)      |
 | PiCam          | Eyes (OpenCV processing)      |
-| ESP (external) | Muscles (motor/sensor control)|
+| nano (external) | Muscles (motor/sensor control)|
 | Gyro (BMA250)  | Orientation + lap detection   |
 | LEDs + Button  | Status & control interface    |
 
