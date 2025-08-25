@@ -70,4 +70,4 @@ while True:
 
 # --- Cleanup ---
 picam2.stop()
-cv2.destroyAllWindows   # <-- this is a function, needs parentheses when used
+cv2.destroyAllWindows()   # <-- this is a function, needs parentheses when used
