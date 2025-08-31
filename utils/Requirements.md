@@ -16,7 +16,7 @@ This document lists **all the hardware parts** and **software dependencies** req
 - **5V Power Bank** (for Raspberry Pi)
 - **Push Button** (for motor start/stop)
 - **DPST Switches** (for circuit on/off)
-- **Chasis for Robot** Link - [Amazon Link](https://www.amazon.in/dp/B0F2YQ8GJL?ref=ppx_pop_mob_ap_share)
+- **Chasis for Robot** Link - [Chasis Link](https://probots.co.in/4w-robot-kit-steering-plastic.html)
 
 
 ---
