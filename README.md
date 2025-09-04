@@ -157,22 +157,20 @@ WRO2025-SelfDrivingRobot/
 ├── README.md                 # Engineering Journal (this file)
 │
 ├── main/                     # Entry points for challenges
-│   ├── main_open.py          # Open Challenge logic
 │   └── obstacle_challenge.py # Obstacle Challenge logic
 │
 ├── vision/                   # Computer vision algorithms
 │   └── obstacle_detection.py # Obstacle recognition & HSV filtering
 │
 ├── logic/                    # Core decision-making
-│   ├── lap_counter.py        # Lap tracking FSM
+│   ├── lap_counter.ino        # Lap tracking FSM
 │   └── stop_handler.ino      # Arduino stop handler
 │
 ├── nano/                     # Nano firmware
-│   └── main.ino              # Controls motors, servo, sensors
-│
+│   ├── main_open.ino        # Controls motor, servo, sensors
+│   └── stop_obstacle.ino
 ├── setup_and_tests/          # Calibration utilities
 │   ├── callibration.py
-│   └── callibration_for_line_distance.py
 │
 ├── utils/                    # Helper documents
 │   └── Requirements.md       # Dependencies and setup notes
@@ -260,7 +258,7 @@ python3 main/obstacle_challenge.py
 
 ### **Communication Flow**
 
--   **Transport:** UART (115200 baud) over USB or GPIO serial.
+-   **Transport:** UART (9600 baud) over USB or GPIO serial.
 
 -   **Pi → Nano Commands (ASCII):**
 
@@ -271,6 +269,9 @@ python3 main/obstacle_challenge.py
     ACK:OK, SENS:TOF:<mm>, SENS:YAW:<deg>, EVENT:TURN_DONE
 
 This **text-based protocol** is easy to log and debug in the field.
+
+The TOF is used for turning corners in both obstacle challenge and open challenge by detecting the change in measured values on either side and turns to the direction with more distance. Raspberry Pi cam is used for Obstacle challenge
+
 
 * * * * *
 
@@ -342,7 +343,7 @@ This **text-based protocol** is easy to log and debug in the field.
 
 -   **Battery → L298N (VMOT)**
 
--   **Battery → 5V regulator → Pi + Nano**
+-   **Battery → Powerbank (5V 3A) → Pi + Nano**
 
 -   **Common GND** between Pi, Nano, sensors, and driver
 
@@ -358,7 +359,7 @@ This **text-based protocol** is easy to log and debug in the field.
 
 ### **Serial**
 
--   **Pi UART** ↔ **Nano UART** (115200 baud)
+-   **Pi UART** ↔ **Nano UART** (9600 baud)
 
 > Keep motor power lines twisted and away from camera ribbon to reduce noise.
 
@@ -430,7 +431,7 @@ Transitions require **geometric + color + yaw** agreement to count a section c
 
 -   Compute pillar centroid to determine **left/right** of track center.
 
--   If **red** → ensure path **left**; **green** → path **right**.
+-   If **red** → ensure path **Right**; **green** → path **Left**.
 
 -   If geometry forces wrong side, **abort** and stop (rule-compliant).
 
@@ -556,7 +557,6 @@ yaw = alpha*(yaw + gyro_z*dt) + (1-alpha)*accel_yaw
 
 -   Always **start in the lot** and **tune parking** carefully; these are **high-value, deterministic** points.
 
-> See docs/scoring_scenarios.md for scenario tables and examples.
 
 * * * * *
 
@@ -748,10 +748,6 @@ This project is open-source under the [MIT License](LICENSE).
 **Q: Why not use only the Pi for PWM?**
 
 A: Software PWM under Linux can jitter under CPU load. The Nano guarantees deterministic PWM for motors/servo.
-
-**Q: Do I need the color sensor if I already have the camera?**
-
-A: No. Camera is primary. Color sensor is optional as a cross-check when lighting is unpredictable.
 
 **Q: How do you guarantee 3 laps and stop in the original section?**
 
